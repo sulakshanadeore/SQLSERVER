@@ -1,0 +1,94 @@
+select user
+select SYSDATETIME()
+
+--executing server side object ---use go
+sp_help employee
+go
+
+select user
+go
+select * from employee
+select * from publishers
+go
+
+sp_help byroyalty
+
+select * from authors
+
+--a) select--- list/show
+--b) * ---all
+--c) from---- source
+--d) specifyname--
+
+select * from authors
+where city='gary'
+
+select * from authors
+where city='Gary'
+
+select * from authors
+where city like 'gary'
+
+select * from authors
+where phone = '219 547-9982'
+
+select * from discounts
+where lowqty like 100
+
+select * from discounts
+where lowqty like '100'
+
+--neither the data is case sensitive nor the commands/statements/queries
+SELEcT * From dISCOUNTS
+where lowqty likE '100'
+
+
+
+--select--query statement-- SQL===Structured Query Language
+---insert/update/delete----Data Manipulation Language statements---manual commit
+---create/alter/drop--- Data Definition Language commands--- auto commit--(save) , rollback --- (undo)
+--commit-auto/manual
+---creating/altering/dropping(deleting) structure---- commands
+--inserting/updating/deleting--(rows)-----changes to the existing/new data/removing from the database object
+--(ie table) ---manipulating(changing) the rows --statement
+
+
+
+select * from discounts
+where lowqty = 100 and highqty=1000
+
+select * from discounts
+where lowqty = 100 and highqty like 1000
+
+select * from discounts
+where lowqty = 200 or highqty is NULL or highqty=1000
+
+select * from discounts
+where (lowqty = 200 and highqty=1000) or highqty is NULL 
+
+
+
+
+
+select * from sales
+
+select * from sales
+where ord_date like '1993-12-12'
+
+select * from sales
+where convert(char(10),ord_date,23)='1994-09-14'
+--- ord_date like '1994-09-14'
+
+select ord_date, DATEDIFF(YYYY,ord_date,getdate()) from sales
+
+select DATEADD(yy,2,getdate())
+select DATEPART(hh,getdate())
+select SYSDATETIMEOFFSET()
+select SYSUTCDATETIME()
+SELECT  GETDATE() 'Today',
+
+select datepart(hh,convert(varchar(20),getdate(),109))
+ 
+
+
+
