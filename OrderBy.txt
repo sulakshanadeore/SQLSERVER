@@ -1,0 +1,7 @@
+use Northwind
+
+select * from products
+order by categoryid
+
+select * from products
+order by categoryid desc

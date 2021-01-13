@@ -1,0 +1,47 @@
+--aggregate functions
+--aggregate-- if u r performing operations on a set of 
+--values it returns single value its aggregate function
+
+----sum,min,max,count,avg
+use northwind
+go
+
+select sum(quantity) from [Order Details]
+select quantity from [order details]
+
+select count(quantity) from [Order Details]
+select count(*) from [Order Details]
+select * from [order details]
+
+select sum(unitprice) from [order details] 
+
+select CategoryID,CategoryName,Description,Picture  from Categories
+
+select count(categoryid) from Categories
+
+select * from Customers
+
+select count(region) from customers---doesnot count null values in the column
+
+select count(Customerid) from customers
+select * from Customers
+select count(*) from customers
+select count(region) from customers
+
+select max(unitprice) from products
+select min(unitprice) from products
+select avg(unitprice) from products
+select count(*) from [Products]
+select * from [Products]
+
+
+select * from products
+where unitprice=263.50
+select * from products
+where unitprice=2.50
+
+
+
+
+
+

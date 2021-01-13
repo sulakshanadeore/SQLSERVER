@@ -1,0 +1,75 @@
+----Single Row Function
+--- one value for each row-- ie multiple values-- multiple rows
+
+select * from customers
+
+select CompanyName,upper(companyname) from customers
+select CompanyName,lower(companyname) from customers
+select CompanyName,len(companyname) from customers
+select CompanyName,substring(companyname,1,3) from customers
+select companyname,charIndex('F',companyname) from customers
+select replace('America','r','A')
+select companyname,replace(companyname,' ','') from customers
+
+select len('hello        ')
+select  ltrim('  hello') as trimmedString
+select firstname from employees
+select firstname,len(firstname) from Employees
+
+select ('                   4 spaces at the start'), ltrim('            4 spaces at the start') 
+select len('                   4 spaces at the start          '), 
+len(rtrim('    4 spaces at the start        ')) 
+
+select len('                   4 spaces at the start          '), 
+len(ltrim(rtrim('    4 spaces at the start        '))) 
+
+select ('hello'), REVERSE('hello')
+
+select ProductName,REVERSE(ProductName) from Products
+
+select ascii('A') 
+select productname, ASCII(substring(productname,1,1)) from  Products
+select productname, ASCII(productname) from  Products
+select DIFFERENCE('Anaaaaaa','Anne')
+select DIFFERENCE('Mphasis','Mphasis')
+select DIFFERENCE('Scott','Scot')--- 0 to 4
+
+select FirstName from Employees
+select soundex('Ana'),soundex('Anne')
+select soundex('Ana'),soundex('Banana')
+select soundex('Scot'),soundex('Scott')
+
+select productname,right(productname,4) as fromright,left(productname,4) as fromleft from Products
+
+select firstname,lastname,
+CONCAT(firstname,lastname),FirstName + LastName,concat_ws('-',firstname,lastname) from Employees
+
+
+select char(65) 
+
+select stuff('sqllearning',2,3,'JAVASCRIPT')
+select stuff('sql learning',2,3,'JAVASCRIPT')
+
+select * from employees 
+where firstname like 'A%'
+
+
+select * from employees 
+where firstname like '%A'
+
+select * from employees 
+where firstname like 'A%w'
+
+select * from employees 
+where firstname like '______'
+
+select * from employees 
+where firstname like '_____t'
+
+select firstname, patindex('Andrew',FirstName) from  employees 
+
+
+select firstname, patindex('%e%',FirstName) from  employees 
+
+select firstname, patindex('_____t',FirstName) from  employees 
+
