@@ -1,0 +1,29 @@
+create database HR183
+go
+
+
+use hr183
+go
+sp_help students
+
+create table emp
+(empno int primary key,
+ename varchar(20),
+sal money,
+mgr int foreign key references emp(empno))
+
+create table department
+(deptno int constraint pk_department primary key,
+dname varchar(20),
+loc	varchar(20));
+
+alter table emp
+add deptno int foreign key references
+ department(Deptno)
+
+ go
+
+
+sp_help emp
+
+sp_help department
