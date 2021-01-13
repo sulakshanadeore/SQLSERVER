@@ -1,0 +1,83 @@
+--group by
+---group the similar data to find some more info about it
+select * from Products
+---Product & categories table
+---- 1Prodcut-- 1 Category
+-----MProduct---- 1 Category
+
+
+select * from Categories
+----groupby---aggregate function
+
+select categoryid,count(*)  as countOfProducts from products
+group by categoryid
+
+select orderid, count(productid) Productcount from [Order Details]
+group by OrderID
+
+select * from  [Order Details]
+where OrderID=10248
+
+select 14+9.80+34.80
+
+select orderid,productid,unitprice,quantity,sum(UnitPrice*Quantity) price
+ from [Order Details]
+ where orderid=10248
+ group by orderid,productid,unitprice,quantity
+
+
+ select orderid,sum(UnitPrice*Quantity) price
+ from [Order Details]
+ where orderid in (10248,10249)
+ group by orderid
+ select 58.6+1863.40
+
+
+ select orderid,sum(UnitPrice*Quantity) price
+ from [Order Details]
+ where orderid in (10248,10249)
+  group by  rollup(orderid)
+
+
+  select orderid,sum(UnitPrice*Quantity) orderAmt
+ from [Order Details]
+   group by  rollup(orderid)
+
+
+
+     select orderid,productid,unitprice,quantity,sum(UnitPrice*Quantity) orderAmt
+ from [Order Details]
+   group by  rollup(productid),orderid,unitprice,quantity
+
+
+
+     select orderid,productid,sum(UnitPrice*Quantity) orderAmt
+ from [Order Details]
+ where (orderid=10248 or orderid=10249) 
+   group by  cube(orderid,productid)
+
+   select orderid,productid,sum(UnitPrice*Quantity) orderAmt
+ from [Order Details]
+ where (orderid=10248 or orderid=10249) 
+   group by  rollup(orderid,productid)
+
+   ---------------***********************--------------------
+   ---having-------
+     select orderid,ceiling(sum(UnitPrice*Quantity))orderAmt
+ from [Order Details]
+   group by  orderid
+   having sum(UnitPrice*Quantity)>1000
+   order by orderAmt
+
+   select * from orders
+   where orderid=10248 or orderid=10249
+
+   select * from orders
+   where orderid in(10248,10249)
+
+   select count(*) from orders
+   where convert(char(10),OrderDate,23) between '1996-07-01' and '1996-12-01'
+
+   select * from orders
+   where orderid between 10392 and 10394
+
