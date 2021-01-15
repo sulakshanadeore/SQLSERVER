@@ -1,0 +1,24 @@
+---nickname gven to object-- view/table/function/trigger/function/procedure/index...etc
+--- 2 types-- public and private--
+---public synonyms permissions required
+----private synonyms allowed
+create synonym s1 for students
+select * from s1
+----------------------------------
+----Indexes
+----Data be fetched faster , u create index on that column
+---2 types
+----clustered and non-Clustered
+---- clustered indexes---- Only one clustered index can be created per table
+--and if  u have a primary key on the table, u cannot any more create a
+---clustered index on that table, because primary key creates a Clustered by default 
+--on that column
+---NonClustered--- There can be max 249 indexes of nonclustered type on a table.
+----create indexes on the columns which are frequently used in the where cluase of the select statement.
+
+--- u can only create indexes on non-repeating columns
+create  index i1
+on students(deptno)
+
+create  index i2
+on students(state,city)
