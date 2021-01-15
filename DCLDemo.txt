@@ -1,0 +1,75 @@
+--dcl--- data control language
+---grant, revoke,commit, rollback, set transaction ,savepoint 
+
+select * from Students
+
+begin tran t1
+insert into students values('pritesh','hyd','AP','India',10)
+commit tran t1
+
+begin tran t2
+delete from Students where rollno=6
+rollback tran t2
+
+begin tran t3
+delete from Students where rollno=6
+commit tran t3
+select * from Students
+delete from Students where rollno=6
+rollback tran t3
+
+begin tran t4
+insert into students values('akash','sydney','sydney','AU',10)
+rollback tran t4
+
+--savepoint
+--sql server savepoints are used to rollback transactions to a specified 
+--point.
+--ie. you want to rollback part of a transaction instead of whole 
+--transaction.
+---so if we r rolling back transactions to a specific point(savepoint)
+-- only statements after the savepoint and before the rollback will be
+-- rolled back
+
+
+create database d1
+go
+use d1
+go
+create table t1
+(id int primary key,
+name int not null)
+
+select * from  t1
+
+begin tran
+insert into t1 values(1,1)
+---this will crate a savepoint after the firstinsert
+save transaction firstInsert
+
+insert into t1 values(2,2)
+--rollabck till the savepoint right after the first insert
+rollback tran firstInsert
+--this will commit the transaction leaving just the first insert
+commit
+
+truncate table t1
+
+select * from t1
+
+begin tran
+insert into t1 values(1,1)
+---this will crate a savepoint after the firstinsert
+save transaction firstInsert
+insert into t1 values(2,2)
+save transaction secondInsert
+
+insert into t1 values(3,3)
+--rollabck till the savepoint right after the first insert
+rollback tran secondInsert
+--this will commit the transaction leaving just the first insert
+commit
+
+select * from t1
+
+ 
