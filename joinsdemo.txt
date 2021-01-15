@@ -1,0 +1,26 @@
+---self join
+---works on a single table
+select * from employees
+
+select employeeid,firstname,lastname, reportsto from Employees
+
+go
+--managers employeeid(m.employeeid) should be equal to 
+--employees mgrid(e.reportsto)
+
+select e.employeeid,e.firstname,e.lastname,e.reportsto,m.FirstName,m.LastName
+from Employees e, employees m
+where e.ReportsTo=m.EmployeeID
+
+
+
+select e.employeeid,e.firstname,e.lastname,e.reportsto,m.FirstName,m.LastName
+from Employees e  inner join employees m
+on e.ReportsTo=m.EmployeeID
+
+
+select e.employeeid,e.firstname,e.lastname,e.reportsto,c.companyName
+from Employees e ,customers c
+
+select 91*9 
+sp_help employees
