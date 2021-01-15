@@ -1,0 +1,32 @@
+sp_help students
+
+alter table students 
+drop column parentsIncome
+
+
+alter table students 
+drop column Indian
+
+alter table students
+add  country varchar(20)
+
+select * from students
+
+sp_help students
+
+
+alter table students
+modify sname nvarchar(50) not null
+
+update Students
+set country
+='India'
+
+insert into students values('Prakash','Blore','KA',null,20)
+
+delete from Students
+where rollno=5;
+
+--(ddl)create/alter/drop--- rollback the dml(i/u/d)
+
+drop table trialprimary
