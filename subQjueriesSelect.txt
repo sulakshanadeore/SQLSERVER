@@ -1,0 +1,72 @@
+----sub-Queries
+----query inside query-- embedded in where, from .
+-----a subquery is written to return the data that will be used 
+--to further restrict the data using it as a condition 
+--- can be used with select,insert,update,delete using operators
+---like >.<.>=,<=,!=,=,in,not in, between, not between, etc.
+-----Rules----
+---1) subqueries must always be written in parenthesis-()
+---2) A subquery can have only one column in the select clause , unless
+---there are multiple columns in the outer query for the subquery to compare
+---3) An order by cannot  be used in SUBQUERY.
+---4) Groupby can be used in  subquery
+---5) The select query cannot include any values that evaluate to 
+---BLOB(Binary Large Objects), CLOB(Character Large Objects),etc
+---A subquery cannot be immediately enclosed in set function.
+use northwind
+go
+
+select * from employees
+----Subquery with select
+---task--- find the employees who stay in the same city as Nancy stays
+select city from employees
+where firstname like 'Nancy'
+
+
+select FirstName,LastName from employees
+where city like (select city from employees
+where firstname like 'Nancy')
+
+---task--- find the employees who stay in the same city 
+---as Nancy or Margaret stays
+select city from employees
+where FirstName like 'Nancy' or FirstName like 'Margaret'
+
+select city from employees
+where FirstName in('Nancy','Margaret')
+
+select firstname,lastname from employees
+where city in(select city from employees
+where FirstName like 'Nancy' or FirstName like 'Margaret')
+
+
+----task---List all products whose unit price > 
+--(avg price > 10 in their category)
+select Productid,UnitPrice,categoryid from products
+where unitprice in (select ceiling(avg(unitprice)) price from products
+group by categoryid
+having ceiling(avg(unitprice))>10)
+
+select categoryid, ceiling(avg(unitprice)) price from products
+group by categoryid
+having ceiling(avg(unitprice))>10
+
+-----------------------------------------
+
+
+select * into employeesdummy from employees 
+where 1=2
+
+select * from employeesdummy
+
+sp_help employeesdummy
+sp_help employees
+
+insert into employeesdummy(firstname,lastname)
+(select firstname,lastname from Employees
+where EmployeeID in (1,2,3))
+
+
+
+
+-----List all products whose avg price > 10 in their category
