@@ -1,0 +1,56 @@
+-----Operators --- union , uinion all, interserct, except(minus)
+--1) In join the data is skipped if it doesn't match condition but in operators
+--the whole row is compared for union,union all,intersect or except
+
+----What is purpose
+--- when u want to combine one or more queries then use these operators to 
+---filter the queries yet further
+----Rules
+---1) number of columns selected in the select must be
+---same 
+----2) the datatypes must match for the selected columns in the sequence 
+--written in the select query
+
+select comm,deptno from emp where deptno=10
+select empno,sal from emp where deptno=10
+
+select job from emp where deptno=20
+
+select job from emp where deptno=30
+
+select ename,job,deptno from emp
+where deptno=10
+union all
+select ename,job,deptno from emp
+where deptno=20
+
+select job from emp
+where deptno=10
+union 
+select job from emp
+where deptno=20
+
+
+select job from emp
+where deptno=10
+intersect
+select job from emp
+where deptno=20
+
+select job from emp
+where deptno=20
+except
+select job from emp
+where deptno=10
+
+(select job from emp
+where deptno=20
+union
+select job from emp
+where deptno=10)
+union all
+select job from emp
+where deptno=30
+
+
+
