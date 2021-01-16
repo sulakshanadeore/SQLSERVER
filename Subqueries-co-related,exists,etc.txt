@@ -1,0 +1,57 @@
+use pubs
+go
+select min(price) from titles
+
+select type,min(price) as minprice from titles
+group by type
+
+select * from titles
+
+---task list all titles having price > min price in their type
+
+select title_id,title,price,type from  titles
+where price > any (select t.minprice from
+(select type,min(price) as minprice from titles
+group by type) as t) 
+
+
+
+---task list all titles having price > max price in their type
+select title_id,title,price,type from  titles
+where price > any (select t.maxprice from
+(select type,max(price) as maxprice from titles
+group by type) as t) 
+
+
+
+---------------
+select title_id,title,price,type from  titles
+where  price < any (select t.maxprice from
+(select type,max(price) as maxprice from titles
+group by type) as t) 
+-----------------------------------------------------
+select distinct(type) from titles
+-----------------------------------------------------
+
+select count(*) from titles
+where type='business'
+
+select * from titles
+where exists (select count(*) from titles
+where type='business'
+having count(*)>4)
+-----------------------------------------------
+
+
+select title_id,title,price,type,
+(select avg(price) as avgprice from titles
+where type not in('UNDECIDED')) averageprice,
+price-(select avg(price) from titles where type not in ('UNDECIDED') ) "price-avgprice" from titles
+where price>(select avg(price) from titles)
+
+
+
+
+
+
+
