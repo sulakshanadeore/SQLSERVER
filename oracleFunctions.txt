@@ -1,0 +1,114 @@
+
+                                       NVL
+
+select comm,NVL(comm,0) from emp;
+
+ select comm,sal,NVL2(comm,comm,sal+comm) from emp;
+
+select comm,sal,NVL2(comm,comm,sal) from emp;
+
+select comm,sal,NVL2(comm,comm,(sal+comm)) from emp;
+
+select comm,sal,NVL2(comm,comm,NVl(comm,0)+sal) from emp;
+
+select comm,sal,NVL2(comm,0,comm+sal) from emp;
+
+select comm,sal,NVL2(comm,comm+sal,0) from emp;
+
+select comm,sal,NVL2(comm, sal + comm, sal) from emp
+
+---------------------------------------------------------------------------------------------------------------------
+
+select * from emp where mgr is null;
+
+select sysdate from dual;
+
+select to_char(sysdate,'yyyy') from dual;
+
+select TO_DATE('2021/01/19', 'yyyy/mm/dd') from dual;
+
+SELECT TO_DATE('2015/05/15 8:30:25', 'YYYY/MM/DD HH:MI:SS') FROM dual;
+
+SELECT TO_DATE('15 MAY 2005', 'dd MON YYYY') from dual;
+
+ SELECT TO_Char(hiredate, 'dd MON YYYY') from emp
+
+SELECT TO_Char(hiredate, 'dd/mm/YYYY') from emp
+
+SELECT TO_Char(hiredate, 'dd/month/YYYY') from emp
+
+SELECT TO_Char(hiredate, 'dd/Month/YYYY') from emp
+
+SELECT TO_Char(hiredate, 'dd/MONTH/YYYY') from emp
+
+SELECT TO_Char(hiredate, 'ddspth') from emp
+
+ SELECT TO_Char(hiredate, 'Ddspth') from emp
+
+ SELECT TO_Char(hiredate, 'DDspth') from emp
+
+SELECT TO_Char(hiredate, 'mmspth') from emp
+
+SELECT TO_Char(hiredate, 'Mmspth') from emp
+
+
+SELECT TO_Char(hiredate, 'MMspth') from emp
+
+SELECT hiredate, TO_Char(hiredate, 'year') from emp
+
+SELECT hiredate, to_char(hiredate,'ddspth'), TO_Char(hiredate, 'year') from emp
+
+ SELECT hiredate, to_char(hiredate,'ddspth') || '-' || TO_Char(hiredate, 'year') from emp
+
+select hiredate|| ' of ' || ename from emp;
+
+select hiredate,to_char(hiredate,'Q') from emp
+
+select hiredate,to_char(hiredate,'Rm') from emp
+
+select hiredate,to_char(hiredate,'RM') from emp
+
+select ename,upper(ename) from emp;
+
+select ename,lower(ename) from emp;
+
+SELECT TO_DATE('2015/05/15 8:30:25', 'YYYY/MM/DD HH:MI:SS')
+
+select ename, substr(ename,0,2) from emp
+
+select concat(ename,hiredate) from emp;
+
+select initcap(ename) from emp;
+
+	Ename
+
+select initcap('this is') from dual;
+
+	This Is
+
+select chr('65') from dual;
+
+select ascii('A') from dual;
+
+select instr('this is demo','demo') from dual;
+
+select instr('this is demo','i') from dual;
+
+select instr('this is demo','is') from dual;
+
+select instr('thin is demo','is') from dual;
+
+select lpad('this',10,'*') from dual;
+
+select rpad('this',10,'*') from dual;
+
+select replace('jack and jill','j','g') from dual;
+
+select replace('jack and jill','j','gg') from dual;
+
+SELECT CURRENT_DATE from dual;
+
+select last_day(hiredate) from emp
+
+select last_day(sysdate) from dual
+
