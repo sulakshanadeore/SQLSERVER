@@ -1,0 +1,26 @@
+---UDF(User Defined Functions) / User Defined Stored Procedures
+
+--procedures--- void 
+---return--out type parameters
+---sp-- in type & out type of parameters
+--in--input
+--out-output
+
+---Insert/Update/Delete--- Procedures
+----select/calcuate----functions
+-----select---- many rows---- table valued function
+
+select * from emp
+where deptno=@deptno
+
+---calculate---- single value=----Scalar valued function
+
+select sal from emp
+where empno=7369
+
+select sum(sal) from emp
+
+select sum(sal) from emp
+where deptno=10
+group by deptno
+

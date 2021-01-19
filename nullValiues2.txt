@@ -1,0 +1,25 @@
+use northwind
+go
+select * from Customers
+select region from customers
+
+select ISNULL(region,'Na') from Customers
+
+select * from categories
+
+select * from Products
+
+declare @temp table
+(col1 int,
+col2 varchar(20))
+
+insert into @temp values(1,'A');
+insert into @temp values(1,'B');
+insert into @temp values(2,'C');
+insert into @temp values(3,'D');
+insert into @temp values(3,'E');
+insert into @temp values(null,'F');
+insert into @temp values(null,'G');
+
+select col1,count(col2) from @temp
+group by col1
