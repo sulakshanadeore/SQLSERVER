@@ -112,3 +112,43 @@ select last_day(hiredate) from emp
 
 select last_day(sysdate) from dual
 
+select hiredate,add_months(hiredate,1) from emp;
+
+select hiredate,add_months(hiredate,-1) from emp;
+
+select systimestamp from dual;
+
+select current_timestamp from dual;
+
+alter session set nls_timestamp_tz_format = 'DD-MON-YYYY HH24:MI:SS.FF TZH:TZM';
+
+select current_timestamp(3) from dual;
+
+select localtimestamp() from dual;
+
+select localtimestamp(2) from dual;
+
+select extract(hour from localtimestamp) from dual;
+
+select extract(month from localtimestamp) from dual;
+
+select extract(day from localtimestamp) from dual;
+
+select to_char(sysdate,'day') From dual;
+
+select to_char(sysdate,'dy') From dual;
+
+select to_char(sysdate,'d') From dual;
+
+select sysdate-2 from dual;
+
+select to_char(sysdate-2,'d') From dual;
+
+sELECT TO_CHAR(localtimestamp,'MM/DD/YYYY HH24:MI:SS:FF3') from dual;
+
+sELECT TO_CHAR(systimestamp,'MM/DD/YYYY HH24:MI:SS:FF3') from dual;
+
+sELECT TO_CHAR(localtimestamp,'MM/DD/YYYY HH12:MI:SS:FF3') from dual;
+
+sELECT TO_CHAR(systimestamp,'MM/DD/YYYY HH12:MI:SS:FF3') from dual;
+
