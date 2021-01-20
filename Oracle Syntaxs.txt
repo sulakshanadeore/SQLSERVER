@@ -1,0 +1,41 @@
+Creating a table from existing table without data
+
+	create table book101 as select * from emp where 1=2;
+		(new table)	         (existing table)
+
+insert the data from existing table
+
+	 insert into Book101 select * from emp;
+		(new table)                   (existing table)
+
+inserting the data by user
+
+	insert into emp values(&empNo,'&Ename','&Job',&mgr,'&hiredate',&sal,&comm,&deptNo)
+
+	Enter value for empno: 1
+	Enter value for ename: jack
+	Enter value for job: manager
+	Enter value for mgr: 7698
+	Enter value for hiredate: 20-Jan-21
+	Enter value for sal: 20000
+	Enter value for comm: null
+	Enter value for deptno: 10
+	
+	old   1: insert into emp values(&empNo,'&Ename','&Job',&mgr,'&hiredate',&sal,&comm,&deptNo)
+	new   1: insert into emp values(1,'jack','manager',7698,'20-Jan-21',20000,null,10)
+
+printing the content to application
+
+ 	declare
+		p_a1 int;
+ 	 begin
+  		dbms_output.put_line('hello');
+  	end;
+
+Printed content is show when the serveroutput is set to on
+
+	set serveroutput on
+	/
+
+	output: hello
+ 
